@@ -126,7 +126,7 @@ class _motherState extends State<mother> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'look & look',
+                    'suresh & look',
                     style: TextStyle(fontSize: 22, color: Colors.blue),
                   ),
                 ],
