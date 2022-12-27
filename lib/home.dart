@@ -53,8 +53,8 @@ class _LoginState extends State<Login> {
             Container(
               height: 30,
               width: 300,
-              child: FlatButton(
-                color: Theme.of(context).primaryColor,
+              child: ElevatedButton(
+             
                 onPressed: () {
                   Navigator.pushAndRemoveUntil(context,
                       MaterialPageRoute(builder: (context) {
