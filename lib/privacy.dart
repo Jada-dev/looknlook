@@ -15,7 +15,7 @@ class _privacyState extends State<privacy> {
         title: Text(
           'Privacy',
           style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.red),
+              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.blue),
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 1,

@@ -25,7 +25,7 @@ class _settingState extends State<setting> {
         title: Text(
           'Settings',
           style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.red),
+              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.blue),
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 1,

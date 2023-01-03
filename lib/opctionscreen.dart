@@ -19,6 +19,11 @@ class _opctionscreenState extends State<opctionscreen> {
         Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
+           
+            SizedBox(
+              height: 35,
+              width: 100,
+            ),
             GestureDetector(
               onTap: () {
                 setState(() {

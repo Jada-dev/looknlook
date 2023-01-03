@@ -9,6 +9,10 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool isHiddenPassword = true;
+  
+
+
+  bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
 
   // const Login({Key? key}) : super(key: key);
   @override
@@ -32,6 +36,15 @@ class _LoginState extends State<Login> {
                 hintText: "Email",
                 prefixIcon: Icon(Icons.email),
               ),
+              validator:(value){
+                if(value!.isEmpty){
+                  return "Enter Email";
+                }
+                bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
+                if(!emailValid){
+                  return "Enter Email";
+                }
+              },
             ),
             SizedBox(
               height: 15.0,
@@ -48,6 +61,14 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
+              validator:(value){
+                if(value!.isEmpty){
+                  return"Enter Password";
+                }
+                else if(passController.text.length < 6 ){
+                  return "Password Length Should  be more than 6 characters";
+                }
+              },
             ),
             SizedBox(height: 20.0),
             Container(
@@ -78,6 +99,7 @@ class _LoginState extends State<Login> {
         isHiddenPassword = false;
       } else {
         isHiddenPassword = true;
+        
       }
     });
   }

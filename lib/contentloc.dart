@@ -17,7 +17,7 @@ class _contentlocState extends State<contentloc> {
         title: Text(
           'Content Location',
           style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.red),
+              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.blue),
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 1,

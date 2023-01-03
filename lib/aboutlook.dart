@@ -15,7 +15,7 @@ class _aboutlookState extends State<aboutlook> {
         title: Text(
           'About  Look&Look',
           style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.red),
+              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.blue),
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 1,
@@ -42,7 +42,7 @@ class _aboutlookState extends State<aboutlook> {
                 children: [
                   TextSpan(
                     text:
-                        " exists for people to create and share their own video content,and to discover the world with the Look&Look. Look&Look user , you have the freedom to share your creativity and experence with othwer Look&Look user ,meaning, we are trusting you to be responsible with your content.some of the rules are the necessary to keep Look&Look users safe and comfortable.",
+                        " /nexists for people to create and share their own video content,and to discover the world with the Look&Look. Look&Look user , you have the freedom to share your creativity and experence with othwer Look&Look user ,meaning, we are trusting you to be responsible with your content.some of the rules are the necessary to keep Look&Look users safe and comfortable.",
                     style: TextStyle(
                         fontSize: 15,
                         color: Colors.black,

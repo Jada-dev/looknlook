@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:looknlook/editprofile.dart';
+import 'package:looknlook/myvideos.dart';
 import 'package:looknlook/setting.dart';
 
 class profile extends StatelessWidget {
@@ -130,16 +131,24 @@ class profile extends StatelessWidget {
               SizedBox(
                 width: 30,
               ),
-              Container(
-                padding: EdgeInsets.only(right: 40, left: 30),
-                child: Text('Videos',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold)),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.blue),
-                  borderRadius: BorderRadius.vertical(),
+              
+              GestureDetector(
+                onTap: () {
+                    Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => myvideos()));
+                 
+                },
+                child: Container(
+                  padding: EdgeInsets.only(right: 40, left: 30),
+                  child: Text('Videos',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold)),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blue),
+                    borderRadius: BorderRadius.vertical(),
+                  ),
                 ),
               ),
             ],

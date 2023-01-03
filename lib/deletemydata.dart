@@ -15,7 +15,7 @@ class _deletemydataState extends State<deletemydata> {
         title: Text(
           'Delete My Data',
           style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.red),
+              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.blue),
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 1,
