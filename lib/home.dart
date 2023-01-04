@@ -9,10 +9,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool isHiddenPassword = true;
-  
-
-
-  bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
+  TextEditingController passController = TextEditingController();
 
   // const Login({Key? key}) : super(key: key);
   @override
@@ -31,17 +28,19 @@ class _LoginState extends State<Login> {
               'Login',
               style: TextStyle(fontSize: 30, color: Colors.blue),
             ),
-            TextField(
+            TextFormField(
               decoration: InputDecoration(
                 hintText: "Email",
                 prefixIcon: Icon(Icons.email),
               ),
-              validator:(value){
-                if(value!.isEmpty){
+              validator: (value) {
+                if (value!.isEmpty) {
                   return "Enter Email";
                 }
-                bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value);
-                if(!emailValid){
+                bool emailValid = RegExp(
+                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                    .hasMatch(value);
+                if (!emailValid) {
                   return "Enter Email";
                 }
               },
@@ -49,7 +48,8 @@ class _LoginState extends State<Login> {
             SizedBox(
               height: 15.0,
             ),
-            TextField(
+            TextFormField(
+              controller: passController,
               obscureText: isHiddenPassword,
               decoration: InputDecoration(
                 hintText: "Password",
@@ -61,11 +61,10 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
-              validator:(value){
-                if(value!.isEmpty){
-                  return"Enter Password";
-                }
-                else if(passController.text.length < 6 ){
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return "Enter Password";
+                } else if (passController.text.length < 6) {
                   return "Password Length Should  be more than 6 characters";
                 }
               },
@@ -75,7 +74,6 @@ class _LoginState extends State<Login> {
               height: 30,
               width: 300,
               child: ElevatedButton(
-             
                 onPressed: () {
                   Navigator.pushAndRemoveUntil(context,
                       MaterialPageRoute(builder: (context) {
@@ -99,7 +97,6 @@ class _LoginState extends State<Login> {
         isHiddenPassword = false;
       } else {
         isHiddenPassword = true;
-        
       }
     });
   }
