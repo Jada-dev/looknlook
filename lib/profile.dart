@@ -29,7 +29,7 @@ class profile extends StatelessWidget {
           )
         ],
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white30,
       body: Column(
         children: [
           // profile photo
@@ -50,7 +50,8 @@ class profile extends StatelessWidget {
               style: TextStyle(color: Colors.black, fontSize: 25),
             ),
           ),
-          SizedBox(height: 15),
+          SizedBox(height: 25
+          ),
           // number of likes
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -102,7 +103,7 @@ class profile extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 40,
+            height: 70,
           ),
 
           // button -> edit profile ,insta links,bookmark]

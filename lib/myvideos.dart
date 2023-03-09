@@ -16,24 +16,24 @@ class _myvideosState extends State<myvideos> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            padding: EdgeInsets.all(50),
+            padding: EdgeInsets.only(top: 40),
             child: Text(
-              "When you send Spots & Boards, they will appear here...",
+              "Send Spots & Boards Appear Here",
               style: TextStyle(fontSize: 20, color: Colors.blue),
             ),
           ),
-          SizedBox(
-            height: 50,
-            width: 50,
-          ),
-          Container(
-            padding: EdgeInsets.all(50),
-            child: Icon(
-              Icons.video_collection,
-              size: 50,
-              color: Colors.blue,
-            ),
-          )
+       //   SizedBox(
+         //   height: 50,
+           // width: 50,
+          //),
+          //Container(
+            //padding: EdgeInsets.all(50),
+            //child: Icon(
+              //Icons.video_collection,
+              //size: 50,
+              //color: Colors.blue,
+            //),
+          //)
         ],
       ),
     );

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "720694772901",
+    "project_id": "look-look-fd368",
+    "storage_bucket": "look-look-fd368.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720694772901:android:39d1b522c76048e75ff94c",
+        "android_client_info": {
+          "package_name": "com.example.looknlook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720694772901-3fb6297ff4ge05rup82r0opdtc70vf1c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.looknlook",
+            "certificate_hash": "e374bfabca2fe9277dfb88f4b73447c9213175af"
+          }
+        },
+        {
+          "client_id": "720694772901-5sklbgtk0dqb8evhlj2b86ch5nsttgq2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH8zLVatXNU5V1fsXFmATtwdbHYXN_9xM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "720694772901-5sklbgtk0dqb8evhlj2b86ch5nsttgq2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

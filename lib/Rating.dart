@@ -15,6 +15,7 @@ class _Rating extends State<Rating> {
 
   Widget _buildRatingStar(int index) {
     if (index < _currentRating) {
+      
       return Icon(
         Icons.star,
         color: Colors.red,
@@ -28,6 +29,7 @@ class _Rating extends State<Rating> {
       );
     }
   }
+  
 
   Widget _builBody() {
     final stars = List<Widget>.generate(this.widget.maximumRating, (index) {

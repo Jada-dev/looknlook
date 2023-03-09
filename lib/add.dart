@@ -128,7 +128,7 @@ class _addState extends State<add> {
                   ),
                 ),
                 Widget_buildIconWithText(
-                    Icons.photo, 'Upload', style.copyWith(fontSize: 15), 40),
+                    Icons.photo_size_select_actual_outlined, 'Upload', style.copyWith(fontSize: 15), 40),
               ],
             ),
           )

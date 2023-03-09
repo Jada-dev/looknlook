@@ -25,7 +25,7 @@ class _settingState extends State<setting> {
         title: Text(
           'Settings',
           style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.blue),
+              fontSize: 22, fontWeight: FontWeight.w500, color: Colors.blue),
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 1,
@@ -35,7 +35,7 @@ class _settingState extends State<setting> {
           },
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.green,
+            color: Colors.blue,
           ),
         ),
       ),
@@ -61,12 +61,12 @@ class _settingState extends State<setting> {
                     child: Text(
                       'Account',
                       style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 18,color: Colors.black, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.grey,
+                    color: Colors.black,
                   ),
                 ],
               ),
@@ -86,14 +86,14 @@ class _settingState extends State<setting> {
                     child: Text(
                       'Content Location',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 18,color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                   Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.grey,
+                    color: Colors.black,
                   )
                 ],
               ),
@@ -111,14 +111,14 @@ class _settingState extends State<setting> {
                     child: Text(
                       'Privacy',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 18,color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                   Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.grey,
+                    color: Colors.black,
                   )
                 ],
               ),
@@ -138,14 +138,14 @@ class _settingState extends State<setting> {
                     child: Text(
                       'Delete My Data',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 18,color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                   Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.grey,
+                    color: Colors.black,
                   )
                 ],
               ),
@@ -163,14 +163,14 @@ class _settingState extends State<setting> {
                     child: Text(
                       'Rate Your Experience',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 18,color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                   Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.grey,
+                    color: Colors.black,
                   ),
                 ],
               ),
@@ -186,16 +186,16 @@ class _settingState extends State<setting> {
                           MaterialPageRoute(builder: (context) => aboutlook()));
                     },
                     child: Text(
-                      'About Look & Look',
+                      'Rules Of Look & Look',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 18,color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                   Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.grey,
+                    color: Colors.black,
                   )
                 ],
               ),

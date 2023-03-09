@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:looknlook/Save.dart';
 import 'package:looknlook/add.dart';
 import 'package:looknlook/mother.dart';
 import 'package:looknlook/profile.dart';
@@ -12,7 +13,7 @@ class bottom extends StatefulWidget {
 
 class _bottomState extends State<bottom> {
   int myIndex = 0;
-  List king = [mother(), add(), profile()];
+  List king = [mother(),save(), add(), profile()];
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,12 @@ class _bottomState extends State<bottom> {
               icon: Icon(Icons.home),
               label: 'Home',
               backgroundColor: Colors.blue),
+
+               BottomNavigationBarItem(
+              icon: Icon(Icons.favorite),
+              label: 'Saved',
+              backgroundColor: Colors.blue),
+              
 
               
           BottomNavigationBarItem(

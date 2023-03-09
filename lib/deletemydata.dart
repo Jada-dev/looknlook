@@ -15,7 +15,7 @@ class _deletemydataState extends State<deletemydata> {
         title: Text(
           'Delete My Data',
           style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.blue),
+              fontSize: 20, fontWeight: FontWeight.w500, color: Colors.blue),
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 1,
@@ -25,23 +25,23 @@ class _deletemydataState extends State<deletemydata> {
           },
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.green,
+            color: Colors.blue,
           ),
         ),
       ),
       body: Container(
         child: Padding(
-          padding: const EdgeInsets.only(right: 16, top: 80, left: 25),
+          padding: const EdgeInsets.only(right: 30, top: 100, left: 25),
           child: ElevatedButton(
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.red)),
             onPressed: () {},
             child: Text(
-              "   Delete My  Data                             ",
+              "        Delete My  Data                        ",
               style: TextStyle(
-                  fontSize: 22,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  letterSpacing: 2.2,
+                  letterSpacing: 1.1,
                   color: Colors.white),
             ),
           ),

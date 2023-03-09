@@ -17,7 +17,7 @@ class _contentlocState extends State<contentloc> {
         title: Text(
           'Content Location',
           style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.blue),
+              fontSize: 20, fontWeight: FontWeight.w500, color: Colors.blue),
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 1,
@@ -27,7 +27,7 @@ class _contentlocState extends State<contentloc> {
           },
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.green,
+            color: Colors.blue,
           ),
         ),
       ),
@@ -37,15 +37,15 @@ class _contentlocState extends State<contentloc> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              height: 80,
-              width: 120,
+              height: 60,
+              width: 100,
               padding:
                   EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 20),
               child: Text(
                 "Location",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold),
               ),
               decoration: BoxDecoration(
@@ -55,15 +55,15 @@ class _contentlocState extends State<contentloc> {
               ),
             ),
             Container(
-              height: 80,
-              width: 120,
+              height: 60,
+              width: 100,
               padding:
                   EdgeInsets.only(left: 15, right: 20, bottom: 20, top: 20),
               child: Text(
                 "Contacts",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold),
               ),
               decoration: BoxDecoration(
@@ -73,15 +73,15 @@ class _contentlocState extends State<contentloc> {
               ),
             ),
             Container(
-              height: 80,
-              width: 120,
+              height: 60,
+              width: 100,
               padding:
                   EdgeInsets.only(left: 35, right: 20, bottom: 20, top: 20),
               child: Text(
                 "All",
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold),
               ),
               decoration: BoxDecoration(

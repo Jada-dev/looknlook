@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:looknlook/splash.dart';
 
-Future<void> main() async {
+Future<void> main() async { 
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }

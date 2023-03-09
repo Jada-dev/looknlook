@@ -1,4 +1,7 @@
+
+
 import 'package:flutter/material.dart';
+
 
 class editprofile extends StatefulWidget {
   const editprofile({Key? key}) : super(key: key);
@@ -8,6 +11,8 @@ class editprofile extends StatefulWidget {
 }
 
 class _editprofileState extends State<editprofile> {
+  // final ImagePicker _picker = ImagePicker();
+  // File? image;
   bool isObscurePassword = true;
   @override
   Widget build(BuildContext context) {
@@ -27,8 +32,8 @@ class _editprofileState extends State<editprofile> {
                 child: Stack(
                   children: [
                     Container(
-                      width: 130,
-                      height: 130,
+                      width: 120,
+                      height: 120,
                       decoration: BoxDecoration(
                         border: Border.all(width: 4, color: Colors.white),
                         boxShadow: [
@@ -43,6 +48,7 @@ class _editprofileState extends State<editprofile> {
                       ),
                     ),
                     Positioned(
+
                         bottom: 0,
                         right: 0,
                         child: Container(
@@ -63,7 +69,7 @@ class _editprofileState extends State<editprofile> {
                   ],
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 30),
               buildTextField("Full Name", "Suresh", false),
               buildTextField("Email", "sureshj816@gmail.com", false),
               buildTextField("Password", "anusuresh", true),
@@ -76,26 +82,27 @@ class _editprofileState extends State<editprofile> {
                     onPressed: () {},
                     child: Text("CANCEL",
                         style: TextStyle(
-                            fontSize: 20,
-                            letterSpacing: 2,
+                            fontSize: 15,
+                            letterSpacing: 1,
                             color: Colors.black)),
                     style: OutlinedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(horizontal: 50),
+                      
+                        padding: EdgeInsets.symmetric(horizontal: 30),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20))),
+                            borderRadius: BorderRadius.circular(15))),
                   ),
                   ElevatedButton(
                     onPressed: () {},
                     child: Text("SAVE",
                         style: TextStyle(
-                            fontSize: 20,
-                            letterSpacing: 2,
+                            fontSize: 15,
+                            letterSpacing: 1,
                             color: Colors.white)),
                     style: ElevatedButton.styleFrom(
                         primary: Colors.blue,
-                        padding: EdgeInsets.symmetric(horizontal: 50),
+                        padding: EdgeInsets.symmetric(horizontal: 30),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20))),
+                            borderRadius: BorderRadius.circular(15))),
                   ),
                 ],
               ),
@@ -116,8 +123,11 @@ class _editprofileState extends State<editprofile> {
           suffixIcon: isPasswordTextField
               ? IconButton(
                   icon: Icon(Icons.remove_red_eye, color: Colors.grey),
-                  onPressed: () {
+                  onPressed: () async {
+                  //  XFile? pickedImage = await _picker.pickImage(source: ImageSource.gallery);
+                   
                     setState(() {
+                    // image = File(pickedImage!.path);
                       isObscurePassword = !isObscurePassword;
                     });
                   })

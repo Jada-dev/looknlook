@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:looknlook/thumbup.dart';
 import 'package:share_plus/share_plus.dart';
 
 class opctionscreen extends StatefulWidget {
@@ -11,6 +12,7 @@ class opctionscreen extends StatefulWidget {
 class _opctionscreenState extends State<opctionscreen> {
   bool _thumbup = false;
   bool _thumbdown = false;
+  bool _favorite = false;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -27,17 +29,19 @@ class _opctionscreenState extends State<opctionscreen> {
             GestureDetector(
               onTap: () {
                 setState(() {
-                  _thumbup = !_thumbup;
+                  if(_thumbdown == true){}
+                  else{_thumbup = !_thumbup;}
+                  
                 });
               },
               child: Column(
                 children: [
                   Icon(Icons.thumb_up,
-                      size: 40,
+                      size: 25,
                       color: _thumbup == false ? Colors.white : Colors.red),
                   Text(
                     "Like",
-                    style: TextStyle(fontSize: 15, color: Colors.white),
+                    style: TextStyle(fontSize: 12, color: Colors.white),
                   ),
                 ],
               ),
@@ -49,17 +53,19 @@ class _opctionscreenState extends State<opctionscreen> {
             GestureDetector(
               onTap: () {
                 setState(() {
-                  _thumbdown = !_thumbdown;
+                  if(_thumbup == true){}else{   _thumbdown = !_thumbdown;}
+                
+                  
                 });
               },
               child: Column(
                 children: [
                   Icon(Icons.thumb_down_alt_sharp,
-                      size: 40,
+                      size: 25,
                       color: _thumbdown == false ? Colors.white : Colors.red),
                   Text(
                     "Dislike",
-                    style: TextStyle(fontSize: 15, color: Colors.white),
+                    style: TextStyle(fontSize: 12, color: Colors.white),
                   ),
                 ],
               ),
@@ -76,13 +82,35 @@ class _opctionscreenState extends State<opctionscreen> {
                 children: [
                   Icon(
                     Icons.send,
-                    size: 40,
+                    size: 25,
                     color: Colors.white,
                   ),
                   Text(
                     "Share",
-                    style: TextStyle(fontSize: 15, color: Colors.white),
+                    style: TextStyle(fontSize: 12, color: Colors.white),
                   )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 35,
+              width: 100,
+            ),
+              GestureDetector(
+              onTap: () {
+                setState(() {
+                  _favorite = !_favorite;
+                });
+              },
+              child: Column(
+                children: [
+                  Icon(Icons.favorite,
+                      size: 25,
+                      color: _favorite == false ? Colors.white : Colors.red),
+                  Text(
+                    "Save",
+                    style: TextStyle(fontSize: 12, color: Colors.white),
+                  ),
                 ],
               ),
             ),
@@ -95,8 +123,8 @@ class _opctionscreenState extends State<opctionscreen> {
                 Share.share('check out my website https://example.com');
               },
               child: Container(
-                width: 70,
-                height: 70,
+                width: 50,
+                height: 50,
                 decoration: BoxDecoration(
                   border: Border.all(width: 4, color: Colors.white),
                   boxShadow: [

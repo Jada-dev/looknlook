@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:looknlook/bottom.dart';
+import 'package:looknlook/contentscreen.dart';
 import 'package:looknlook/mother.dart';
+
 
 class Login extends StatefulWidget {
   @override
@@ -8,9 +11,16 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  bool isHiddenPassword = true;
-  TextEditingController passController = TextEditingController();
 
+   String? _email;
+ String? _password;
+ TextEditingController pwdController = TextEditingController();
+ TextEditingController emailController = TextEditingController();
+
+ var _formkey = GlobalKey<FormState>();
+ bool isLoading = false;
+  
+ 
   // const Login({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -19,85 +29,81 @@ class _LoginState extends State<Login> {
         title: Text('Look & Look'),
       ),
       // backgroundColor: Theme.of(context).highlightColor,
-      body: Container(
+      body: isLoading? Center(child: CircularProgressIndicator()):
+       Container(
         padding: EdgeInsets.all(10.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Login',
-              style: TextStyle(fontSize: 30, color: Colors.blue),
-            ),
+        child:  Form(
+          key: _formkey,
+          child: Column(
+          children:<Widget> [
+            SizedBox(height: 20,),
             TextFormField(
-              decoration: InputDecoration(
-                hintText: "Email",
-                prefixIcon: Icon(Icons.email),
-              ),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return "Enter Email";
-                }
-                bool emailValid = RegExp(
-                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                    .hasMatch(value);
-                if (!emailValid) {
-                  return "Enter Email";
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
+              validator: (item){
+                return item!.contains("@") ? null : "Enter Valid Email";
+              
+              },
+              onChanged: (item){
+               setState(){
+                  _email = item;
                 }
               },
-            ),
-            SizedBox(
-              height: 15.0,
-            ),
-            TextFormField(
-              controller: passController,
-              obscureText: isHiddenPassword,
               decoration: InputDecoration(
-                hintText: "Password",
-                prefixIcon: Icon(Icons.lock),
-                suffixIcon: InkWell(
-                  onTap: _togglePaasswordView,
-                  child: Icon(
-                    Icons.visibility,
-                  ),
-                ),
+                hintText: "Enter Email",
+                labelText: "Email",
+                border: OutlineInputBorder(),
               ),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return "Enter Password";
-                } else if (passController.text.length < 6) {
-                  return "Password Length Should  be more than 6 characters";
+            ),
+
+            SizedBox(height: 30),
+
+            TextFormField(
+              controller: pwdController,
+              keyboardType: TextInputType.text,
+              validator: (item){
+                return item!.length > 6  ? null : "Password must be 6 characters";
+              
+              },
+              onChanged: (item){
+                setState(){
+                  _password = item;
                 }
               },
+              decoration: InputDecoration(
+                hintText: "Enter Password",
+                labelText: "Password",
+                border: OutlineInputBorder(),
+              ),
             ),
-            SizedBox(height: 20.0),
+            SizedBox(height: 30,),
             Container(
               height: 30,
               width: 300,
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushAndRemoveUntil(context,
-                      MaterialPageRoute(builder: (context) {
-                    return bottom();
-                  }), (Route route) => false);
-                },
-                child: Center(
-                  child: Text('Login', style: TextStyle(color: Colors.white)),
-                ),
-              ),
-            ),
+                onPressed: (){
+                  print('entered in on press');
+                sinup();
+              }, child: Text('Register',style: TextStyle(color: Colors.white),),),
+            )
+          
+            
           ],
-        ),
+        )),
       ),
     );
   }
+  void sinup(){
 
-  void _togglePaasswordView() {
-    setState(() {
-      if (isHiddenPassword == true) {
-        isHiddenPassword = false;
-      } else {
-        isHiddenPassword = true;
-      }
-    });
+    if(_formkey.currentState!.validate()){
+      
+   FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text, password: pwdController.text).then((user) {
+     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => bottom()), (Route<dynamic> route) => false);
+
+   }).catchError((onError){
+
+   });
+    }
   }
 }
+  

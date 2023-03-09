@@ -127,7 +127,7 @@ class _motherState extends State<mother> {
                 children: [
                   Text(
                     'look & look',
-                    style: TextStyle(fontSize: 22, color: Colors.blue),
+                    style: TextStyle(fontSize: 22, color: Colors.white),
                   ),
                 ],
               ),

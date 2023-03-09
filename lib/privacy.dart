@@ -15,7 +15,7 @@ class _privacyState extends State<privacy> {
         title: Text(
           'Privacy',
           style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.blue),
+              fontSize: 20, fontWeight: FontWeight.w500, color: Colors.blue),
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 1,
@@ -25,13 +25,13 @@ class _privacyState extends State<privacy> {
           },
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.green,
+            color: Colors.blue,
           ),
         ),
       ),
       body: Container(
         child: Padding(
-          padding: const EdgeInsets.only(right: 16, top: 80, left: 25),
+          padding: const EdgeInsets.only(right: 30, top: 100, left: 25),
           child: ElevatedButton(
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.red)),
@@ -39,7 +39,7 @@ class _privacyState extends State<privacy> {
             child: Text(
               "     Blocked  Accounts                        ",
               style: TextStyle(
-                  fontSize: 22, letterSpacing: 2.2, color: Colors.white),
+                  fontSize: 18, letterSpacing: 2.2, color: Colors.white),
             ),
           ),
         ),
