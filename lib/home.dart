@@ -12,10 +12,9 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
 
-   String? _email;
- String? _password;
- TextEditingController pwdController = TextEditingController();
- TextEditingController emailController = TextEditingController();
+  late String _email,_password;
+
+
 
  var _formkey = GlobalKey<FormState>();
  bool isLoading = false;
@@ -38,7 +37,7 @@ class _LoginState extends State<Login> {
           children:<Widget> [
             SizedBox(height: 20,),
             TextFormField(
-              controller: emailController,
+            
               keyboardType: TextInputType.emailAddress,
               validator: (item){
                 return item!.contains("@") ? null : "Enter Valid Email";
@@ -59,7 +58,7 @@ class _LoginState extends State<Login> {
             SizedBox(height: 30),
 
             TextFormField(
-              controller: pwdController,
+            
               keyboardType: TextInputType.text,
               validator: (item){
                 return item!.length > 6  ? null : "Password must be 6 characters";
@@ -97,7 +96,7 @@ class _LoginState extends State<Login> {
 
     if(_formkey.currentState!.validate()){
       
-   FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text, password: pwdController.text).then((user) {
+   FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email, password: _password).then((user) {
      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => bottom()), (Route<dynamic> route) => false);
 
    }).catchError((onError){
