@@ -1,8 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:looknlook/bottom.dart';
 import 'package:looknlook/home.dart';
+import 'package:looknlook/login.dart';
 import 'package:looknlook/main.dart';
+import 'package:looknlook/tabbar.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -21,7 +24,7 @@ class _SplashState extends State<Splash> {
   void _navigatetohome() async {
     await Future.delayed(Duration(milliseconds: 4000), () {});
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => Login()));
+        context, MaterialPageRoute(builder: (context) => bottom()));
   }
 
   @override
@@ -31,7 +34,7 @@ class _SplashState extends State<Splash> {
       Center(
         child: Container(
           child: Text(
-            'Look & Look',
+            'look & look',
             style: TextStyle(
                 fontSize: 25, color: Colors.blue, fontWeight: FontWeight.bold),
           ),
@@ -48,7 +51,7 @@ class _SplashState extends State<Splash> {
         children: [
           Text(
             'Lets keep Look&Look Fun and Original . . .',
-            style: TextStyle(color: Colors.blue),
+            style: TextStyle(color: Colors.blue,fontSize: 16),
           ),
         ],
       ),

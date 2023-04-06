@@ -11,9 +11,12 @@ class _saveState extends State<save> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
       
     body: Row(
+      
       mainAxisAlignment: MainAxisAlignment.center,
+      
       children: [
         Container(
           padding:EdgeInsets.only(top: 80) ,

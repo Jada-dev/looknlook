@@ -26,10 +26,10 @@ class _motherState extends State<mother> {
     });
   }
 
-  final List<String> videos = [
+   final List<String> videos = [
     'https://picsum.photos/id/237/200/300',
-    'https://picsum.photos/seed/picsum/200/300'
-  ];
+     'https://picsum.photos/seed/picsum/200/300'
+   ];
 
   @override
   Widget build(BuildContext context) {
@@ -109,31 +109,33 @@ class _motherState extends State<mother> {
       // ),
       body: SafeArea(
           child: Container(
-        child: Stack(
-          children: [
-            Swiper(
-              itemBuilder: (BuildContext context, int index) {
-                return content(
-                  src: videos[index],
-                );
-              },
-              itemCount: videos.length,
-              scrollDirection: Axis.vertical,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'look & look',
-                    style: TextStyle(fontSize: 22, color: Colors.white),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+        child: Text('hi ')
+        // Stack(
+        //   children: [
+        //     Swiper(
+        //       itemBuilder: (BuildContext context, int index) {
+        //         return content(
+        //           src: videos[index],
+        //         );
+        //       },
+        //       itemCount: videos.length,
+        //       scrollDirection: Axis.vertical,
+        //     ),
+        //     Padding(
+        //       padding: const EdgeInsets.all(8.0),
+        //       child: Row(
+        //         mainAxisAlignment: MainAxisAlignment.center,
+        //         children: [
+        //           Text(
+        //             'look & look',
+        //             style: TextStyle(fontSize: 22, color: Colors.white),
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //   ],
+        // ),
+      
       )),
     );
   }

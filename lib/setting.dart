@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:looknlook/aboutlook.dart';
 import 'package:looknlook/bottom.dart';
@@ -5,6 +6,7 @@ import 'package:looknlook/bottom.dart';
 import 'package:looknlook/contentloc.dart';
 import 'package:looknlook/deletemydata.dart';
 import 'package:looknlook/editprofile.dart';
+import 'package:looknlook/login.dart';
 import 'package:looknlook/mother.dart';
 import 'package:looknlook/opctionscreen.dart';
 import 'package:looknlook/privacy.dart';
@@ -61,7 +63,7 @@ class _settingState extends State<setting> {
                     child: Text(
                       'Account',
                       style:
-                          TextStyle(fontSize: 18,color: Colors.black, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 18,color: Colors.black, fontWeight: FontWeight.normal),
                     ),
                   ),
                   Icon(
@@ -207,9 +209,14 @@ class _settingState extends State<setting> {
                       backgroundColor: MaterialStateProperty.all(Colors.red)),
                   onPressed: () {},
                   child: GestureDetector(
+                    
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => bottom()));
+                      FirebaseAuth.instance.signOut().then((onvalue){
+
+                        Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => login()));
+                      });
+                      
                     },
                     child: Text(
                       "Sign Out",

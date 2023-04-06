@@ -9,6 +9,7 @@ class profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:Colors.grey,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -29,7 +30,7 @@ class profile extends StatelessWidget {
           )
         ],
       ),
-      backgroundColor: Colors.white30,
+    
       body: Column(
         children: [
           // profile photo
