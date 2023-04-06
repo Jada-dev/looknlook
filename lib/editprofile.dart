@@ -1,6 +1,15 @@
 
 
+
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:path/path.dart';
+
 
 
 class editprofile extends StatefulWidget {
@@ -11,11 +20,38 @@ class editprofile extends StatefulWidget {
 }
 
 class _editprofileState extends State<editprofile> {
+
+
+XFile? _image;
+Future getImage(BuildContext context) async {
+      var image = await ImagePicker().pickImage(source: ImageSource.gallery);
+     setState(() {
+       _image=image;
+       print('Image path $_image');
+     });
+
+     uploadPic(context);
+    
+    }
+    
+      Future uploadPic(BuildContext context) async {
+        String filName= basename(_image!.path);
+        Reference firebaseStorageRef =FirebaseStorage.instance.ref().child(filName);
+        UploadTask uploadTask = firebaseStorageRef.putFile(File(_image!.path));
+        TaskSnapshot taskSnapshot= await uploadTask.whenComplete(()=>null);
+
+        setState(() {
+          
+       
+        });
+      }
+ 
   // final ImagePicker _picker = ImagePicker();
-  // File? image;
+   
   bool isObscurePassword = true;
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit Profile'),
@@ -24,6 +60,7 @@ class _editprofileState extends State<editprofile> {
         padding: EdgeInsets.only(left: 15, top: 20, right: 15),
         child: GestureDetector(
           onTap: () {
+            
             FocusScope.of(context).unfocus();
           },
           child: ListView(
@@ -44,14 +81,17 @@ class _editprofileState extends State<editprofile> {
                         ],
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                            fit: BoxFit.cover, image: NetworkImage('')),
+                            fit: BoxFit.cover,
+                            
+                             image: NetworkImage('')),
                       ),
                     ),
                     Positioned(
-
+                      
                         bottom: 0,
                         right: 0,
                         child: Container(
+                          
                           height: 40,
                           width: 40,
                           decoration: BoxDecoration(
@@ -65,7 +105,8 @@ class _editprofileState extends State<editprofile> {
                             Icons.edit,
                             color: Colors.white,
                           ),
-                        ))
+                          
+                        ),),
                   ],
                 ),
               ),
