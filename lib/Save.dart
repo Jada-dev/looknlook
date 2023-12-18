@@ -12,19 +12,18 @@ class _saveState extends State<save> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
-      
-    body: Row(
-      
-      mainAxisAlignment: MainAxisAlignment.center,
-      
-      children: [
-        Container(
-          padding:EdgeInsets.only(top: 80) ,
-          child: Text("Saved Videos Appear Here",style: TextStyle(color: Colors.blue,fontSize: 20),),
-        ),
-      ],
-    ),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: EdgeInsets.only(top: 80),
+            child: Text(
+              "Saved Videos Appear Here",
+              style: TextStyle(color: Colors.black87, fontSize: 20),
+            ),
+          ),
+        ],
+      ),
     );
-    
   }
 }

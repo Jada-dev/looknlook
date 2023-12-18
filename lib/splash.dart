@@ -22,7 +22,7 @@ class _SplashState extends State<Splash> {
   }
 
   void _navigatetohome() async {
-    await Future.delayed(Duration(milliseconds: 4000), () {});
+    await Future.delayed(Duration(milliseconds: 3000), () {});
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => bottom()));
   }
@@ -51,7 +51,7 @@ class _SplashState extends State<Splash> {
         children: [
           Text(
             'Lets keep Look&Look Fun and Original . . .',
-            style: TextStyle(color: Colors.blue,fontSize: 16),
+            style: TextStyle(color: Colors.blue, fontSize: 15),
           ),
         ],
       ),

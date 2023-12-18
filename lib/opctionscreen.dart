@@ -21,7 +21,6 @@ class _opctionscreenState extends State<opctionscreen> {
         Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-           
             SizedBox(
               height: 35,
               width: 100,
@@ -29,9 +28,10 @@ class _opctionscreenState extends State<opctionscreen> {
             GestureDetector(
               onTap: () {
                 setState(() {
-                  if(_thumbdown == true){}
-                  else{_thumbup = !_thumbup;}
-                  
+                  if (_thumbdown == true) {
+                  } else {
+                    _thumbup = !_thumbup;
+                  }
                 });
               },
               child: Column(
@@ -53,9 +53,10 @@ class _opctionscreenState extends State<opctionscreen> {
             GestureDetector(
               onTap: () {
                 setState(() {
-                  if(_thumbup == true){}else{   _thumbdown = !_thumbdown;}
-                
-                  
+                  if (_thumbup == true) {
+                  } else {
+                    _thumbdown = !_thumbdown;
+                  }
                 });
               },
               child: Column(
@@ -96,7 +97,7 @@ class _opctionscreenState extends State<opctionscreen> {
               height: 35,
               width: 100,
             ),
-              GestureDetector(
+            GestureDetector(
               onTap: () {
                 setState(() {
                   _favorite = !_favorite;
@@ -119,9 +120,7 @@ class _opctionscreenState extends State<opctionscreen> {
               width: 100,
             ),
             GestureDetector(
-              onTap: () {
-                Share.share('check out my website https://example.com');
-              },
+              onTap: () {},
               child: Container(
                 width: 50,
                 height: 50,

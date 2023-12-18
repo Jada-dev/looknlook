@@ -10,7 +10,6 @@ class thumbup extends StatefulWidget {
 class _thumbupState extends State<thumbup> {
   get returnFuture => null;
 
-
   Future<int> tempFuture() async {
     return Future.delayed(Duration(seconds: 1));
   }

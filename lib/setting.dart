@@ -29,7 +29,8 @@ class _settingState extends State<setting> {
           style: TextStyle(
               fontSize: 22, fontWeight: FontWeight.w500, color: Colors.blue),
         ),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        backgroundColor: Colors.grey[400],
         elevation: 1,
         leading: IconButton(
           onPressed: () {
@@ -41,13 +42,14 @@ class _settingState extends State<setting> {
           ),
         ),
       ),
+      backgroundColor: Colors.grey[400],
       body: Padding(
         padding: const EdgeInsets.only(left: 16, top: 25, right: 16),
         child: Container(
           child: ListView(
             children: [
               SizedBox(
-                height: 40,
+                height: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,8 +64,10 @@ class _settingState extends State<setting> {
                     },
                     child: Text(
                       'Account',
-                      style:
-                          TextStyle(fontSize: 18,color: Colors.black, fontWeight: FontWeight.normal),
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                          fontWeight: FontWeight.normal),
                     ),
                   ),
                   Icon(
@@ -73,7 +77,10 @@ class _settingState extends State<setting> {
                 ],
               ),
               SizedBox(
-                height: 40,
+                height: 30,
+              ),
+              Divider(
+                color: Colors.black,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,8 +95,9 @@ class _settingState extends State<setting> {
                     child: Text(
                       'Content Location',
                       style: TextStyle(
-                        fontSize: 18,color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.normal,
                       ),
                     ),
                   ),
@@ -100,7 +108,39 @@ class _settingState extends State<setting> {
                 ],
               ),
               SizedBox(
-                height: 40,
+                height: 30,
+              ),
+              Divider(
+                color: Colors.black,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => privacy()));
+                    },
+                    child: Text(
+                      'Notifications',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.black,
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Divider(
+                color: Colors.black,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,8 +153,9 @@ class _settingState extends State<setting> {
                     child: Text(
                       'Privacy',
                       style: TextStyle(
-                        fontSize: 18,color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.normal,
                       ),
                     ),
                   ),
@@ -125,7 +166,10 @@ class _settingState extends State<setting> {
                 ],
               ),
               SizedBox(
-                height: 40,
+                height: 30,
+              ),
+              Divider(
+                color: Colors.black,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -140,8 +184,9 @@ class _settingState extends State<setting> {
                     child: Text(
                       'Delete My Data',
                       style: TextStyle(
-                        fontSize: 18,color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.normal,
                       ),
                     ),
                   ),
@@ -152,7 +197,10 @@ class _settingState extends State<setting> {
                 ],
               ),
               SizedBox(
-                height: 40,
+                height: 30,
+              ),
+              Divider(
+                color: Colors.black,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -165,8 +213,9 @@ class _settingState extends State<setting> {
                     child: Text(
                       'Rate Your Experience',
                       style: TextStyle(
-                        fontSize: 18,color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.normal,
                       ),
                     ),
                   ),
@@ -177,7 +226,10 @@ class _settingState extends State<setting> {
                 ],
               ),
               SizedBox(
-                height: 40,
+                height: 30,
+              ),
+              Divider(
+                color: Colors.black,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -190,8 +242,9 @@ class _settingState extends State<setting> {
                     child: Text(
                       'Rules Of Look & Look',
                       style: TextStyle(
-                        fontSize: 18,color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.normal,
                       ),
                     ),
                   ),
@@ -202,21 +255,24 @@ class _settingState extends State<setting> {
                 ],
               ),
               SizedBox(
-                height: 60,
+                height: 30,
+              ),
+              Divider(
+                color: Colors.black,
+              ),
+              SizedBox(
+                height: 40,
               ),
               ElevatedButton(
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.red)),
                   onPressed: () {},
                   child: GestureDetector(
-                    
                     onTap: () {
-                      FirebaseAuth.instance.signOut().then((onvalue){
-
+                      FirebaseAuth.instance.signOut().then((onvalue) {
                         Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => login()));
+                            MaterialPageRoute(builder: (context) => login()));
                       });
-                      
                     },
                     child: Text(
                       "Sign Out",

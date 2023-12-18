@@ -1,16 +1,11 @@
-
-
-
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:path/path.dart';
-
-
 
 class editprofile extends StatefulWidget {
   const editprofile({Key? key}) : super(key: key);
@@ -20,57 +15,61 @@ class editprofile extends StatefulWidget {
 }
 
 class _editprofileState extends State<editprofile> {
+  XFile? _image;
+  Future getImage(BuildContext context) async {
+    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    setState(() {
+      _image = image;
+      print('Image path $_image');
+    });
 
+    uploadPic(context);
+  }
 
-XFile? _image;
-Future getImage(BuildContext context) async {
-      var image = await ImagePicker().pickImage(source: ImageSource.gallery);
-     setState(() {
-       _image=image;
-       print('Image path $_image');
-     });
+  Future uploadPic(BuildContext context) async {
+    String filName = basename(_image!.path);
+    Reference firebaseStorageRef =
+        FirebaseStorage.instance.ref().child(filName);
+    UploadTask uploadTask = firebaseStorageRef.putFile(File(_image!.path));
+    TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
 
-     uploadPic(context);
-    
-    }
-    
-      Future uploadPic(BuildContext context) async {
-        String filName= basename(_image!.path);
-        Reference firebaseStorageRef =FirebaseStorage.instance.ref().child(filName);
-        UploadTask uploadTask = firebaseStorageRef.putFile(File(_image!.path));
-        TaskSnapshot taskSnapshot= await uploadTask.whenComplete(()=>null);
+    setState(() {
+      print(' Profile pic uploaded');
+      //   Scaffold.of(context).snowSnackBar(SnackBar(content: Text('profile pic uploaded')));
+    });
+  }
 
-        setState(() {
-          
-       
-        });
-      }
- 
   // final ImagePicker _picker = ImagePicker();
-   
+
   bool isObscurePassword = true;
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Edit Profile'),
-      ),
-      body: Container(
-        padding: EdgeInsets.only(left: 15, top: 20, right: 15),
-        child: GestureDetector(
-          onTap: () {
-            
-            FocusScope.of(context).unfocus();
-          },
-          child: ListView(
-            children: [
-              Center(
-                child: Stack(
-                  children: [
-                    Container(
-                      width: 120,
-                      height: 120,
+        appBar: AppBar(
+          title: Text('Edit Profile'),
+        ),
+        body: StreamBuilder(
+            stream: FirebaseFirestore.instance.collection("kingk").snapshots(),
+            builder: (context, AsyncSnapshot snapshots) {
+              if (!snapshots.hasData) {
+                return CircularProgressIndicator();
+              }
+              if (snapshots.data.docs.length == 0) {
+                return Text("No data");
+              }
+              return ListView.builder(
+                  itemCount: snapshots.data.docs.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      clipBehavior: Clip.antiAlias,
+                      width: 100,
+                      height: 100,
+                      child: (_image != null)
+                          ? CircleAvatar(
+                              backgroundImage: FileImage(File(
+                              _image!.path,
+                            )))
+                          : Container(),
                       decoration: BoxDecoration(
                         border: Border.all(width: 4, color: Colors.white),
                         boxShadow: [
@@ -81,77 +80,118 @@ Future getImage(BuildContext context) async {
                         ],
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                            fit: BoxFit.cover,
-                            
-                             image: NetworkImage('')),
+                            fit: BoxFit.fill,
+                            image: NetworkImage(
+                              snapshots.data.docs[index].data()['name'],
+                            )),
                       ),
-                    ),
-                    Positioned(
-                      
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                          
-                          height: 40,
-                          width: 40,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                width: 4,
-                                color: Colors.white,
-                              ),
-                              color: Colors.blue),
-                          child: Icon(
-                            Icons.edit,
-                            color: Colors.white,
-                          ),
-                          
-                        ),),
-                  ],
-                ),
-              ),
-              SizedBox(height: 30),
-              buildTextField("Full Name", "Suresh", false),
-              buildTextField("Email", "sureshj816@gmail.com", false),
-              buildTextField("Password", "anusuresh", true),
-              buildTextField("Location", "Bobbili", false),
-              SizedBox(height: 30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  OutlinedButton(
-                    onPressed: () {},
-                    child: Text("CANCEL",
-                        style: TextStyle(
-                            fontSize: 15,
-                            letterSpacing: 1,
-                            color: Colors.black)),
-                    style: OutlinedButton.styleFrom(
-                      
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15))),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text("SAVE",
-                        style: TextStyle(
-                            fontSize: 15,
-                            letterSpacing: 1,
-                            color: Colors.white)),
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15))),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+                    );
+                  });
+            })
+
+        //  Container(
+        //   padding: EdgeInsets.only(left: 15, top: 20, right: 15),
+        //     child: ListView(
+        //       children: [
+        //         Center(
+        //           child: Stack(
+        //             children: [
+        //               Container(
+        //                 clipBehavior: Clip.antiAlias,
+        //                 width: 120,
+        //                 height: 120,
+        //                child: (_image!=null)?CircleAvatar(backgroundImage:FileImage(File(_image!.path,))):Container(),
+        //                 decoration: BoxDecoration(
+        //                   border: Border.all(width: 4, color: Colors.white),
+        //                   boxShadow: [
+        //                     BoxShadow(
+        //                         spreadRadius: 2,
+        //                         blurRadius: 10,
+        //                         color: Colors.black.withOpacity(0.1))
+        //                   ],
+        //                   shape: BoxShape.circle,
+        //                   image: DecorationImage(
+        //                       fit: BoxFit.fill,
+        //                        image: NetworkImage( "https://images.unsplash.com/photo-1502164980785-f8aa41d53611?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",)),
+        //                 ),
+        //               ),
+        //               Positioned(
+
+        //                   bottom: 0,
+        //                   right: 0,
+        //                   child: GestureDetector(
+        //                     onTap: () {
+        //       getImage(context);
+        //       FocusScope.of(context).unfocus();
+        //     },
+
+        //                     child: Container(
+
+        //                       height: 40,
+        //                       width: 40,
+        //                       decoration: BoxDecoration(
+        //                           shape: BoxShape.circle,
+        //                           border: Border.all(
+        //                             width: 4,
+        //                             color: Colors.white,
+        //                           ),
+        //                           color: Colors.blue),
+        //                       child: Icon(
+        //                         Icons.edit,
+        //                         color: Colors.white,
+        //                       ),
+
+        //                     ),
+        //                   ),),
+        //             ],
+        //           ),
+        //         ),
+        //         SizedBox(height: 30),
+        //         buildTextField("Full Name", "Suresh", false),
+        //         buildTextField("Email", "sureshj816@gmail.com", false),
+        //         buildTextField("Password", "anusuresh", true),
+        //         buildTextField("Location", "Bobbili", false),
+        //         SizedBox(height: 30),
+        //         Row(
+        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //           children: [
+        //             OutlinedButton(
+        //               onPressed: () {
+        //                  Navigator.of(context).pop();
+        //               },
+        //               child: Text("CANCEL",
+        //                   style: TextStyle(
+        //                       fontSize: 12,
+        //                       letterSpacing: 1,
+        //                       color: Colors.white)),
+        //               style: ElevatedButton.styleFrom(
+        //                 primary: Colors.blue,
+
+        //                   padding: EdgeInsets.symmetric(horizontal: 30),
+        //                   shape: RoundedRectangleBorder(
+        //                       borderRadius: BorderRadius.circular(15))),
+        //             ),
+        //             ElevatedButton(
+        //               onPressed: () {
+        //                 uploadPic(context);
+        //               },
+        //               child: Text("SAVE",
+        //                   style: TextStyle(
+        //                       fontSize: 12,
+        //                       letterSpacing: 1,
+        //                       color: Colors.white)),
+        //               style: ElevatedButton.styleFrom(
+        //                   primary: Colors.blue,
+        //                   padding: EdgeInsets.symmetric(horizontal: 30),
+        //                   shape: RoundedRectangleBorder(
+        //                       borderRadius: BorderRadius.circular(15))),
+        //             ),
+        //           ],
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        );
   }
 
   Widget buildTextField(
@@ -165,10 +205,10 @@ Future getImage(BuildContext context) async {
               ? IconButton(
                   icon: Icon(Icons.remove_red_eye, color: Colors.grey),
                   onPressed: () async {
-                  //  XFile? pickedImage = await _picker.pickImage(source: ImageSource.gallery);
-                   
+                    //  XFile? pickedImage = await _picker.pickImage(source: ImageSource.gallery);
+
                     setState(() {
-                    // image = File(pickedImage!.path);
+                      // image = File(pickedImage!.path);
                       isObscurePassword = !isObscurePassword;
                     });
                   })
@@ -178,7 +218,7 @@ Future getImage(BuildContext context) async {
           floatingLabelBehavior: FloatingLabelBehavior.always,
           hintText: placeholder,
           hintStyle: TextStyle(
-            fontSize: 25,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.grey,
           ),

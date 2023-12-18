@@ -9,7 +9,6 @@ class profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Colors.grey,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -30,7 +29,7 @@ class profile extends StatelessWidget {
           )
         ],
       ),
-    
+      backgroundColor: Colors.grey[400],
       body: Column(
         children: [
           // profile photo
@@ -51,8 +50,7 @@ class profile extends StatelessWidget {
               style: TextStyle(color: Colors.black, fontSize: 25),
             ),
           ),
-          SizedBox(height: 25
-          ),
+          SizedBox(height: 25),
           // number of likes
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -133,12 +131,10 @@ class profile extends StatelessWidget {
               SizedBox(
                 width: 30,
               ),
-              
               GestureDetector(
                 onTap: () {
-                    Navigator.push(context,
+                  Navigator.push(context,
                       MaterialPageRoute(builder: (context) => myvideos()));
-                 
                 },
                 child: Container(
                   padding: EdgeInsets.only(right: 40, left: 30),

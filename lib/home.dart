@@ -14,7 +14,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
-   
+
   var _formkey = GlobalKey<FormState>();
   bool isLoading = false;
 
@@ -22,12 +22,11 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
-        backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.grey[300],
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
-            child: Container(
+              child: Container(
                 padding: EdgeInsets.all(20.0),
                 child: Form(
                     key: _formkey,
@@ -36,8 +35,8 @@ class _LoginState extends State<Login> {
                         SizedBox(
                           height: 60,
                         ),
-                                                             
-                                                       //  Email  TextField
+
+                        //  Email  TextField
                         TextFormField(
                           controller: _email,
                           keyboardType: TextInputType.emailAddress,
@@ -48,16 +47,16 @@ class _LoginState extends State<Login> {
                           },
                           decoration: InputDecoration(
                             hintText: "Enter Email",
-                          //  labelText: "Email",
-                           // fillColor: Colors.white,
-                          //
-                          //  filled: true,
+                            //  labelText: "Email",
+                            // fillColor: Colors.white,
+                            //
+                            //  filled: true,
                             border: OutlineInputBorder(),
                           ),
                         ),
-          
-                        SizedBox(height: 20),             // Password TextField
-                        
+
+                        SizedBox(height: 20), // Password TextField
+
                         TextFormField(
                           controller: _password,
                           keyboardType: TextInputType.text,
@@ -68,14 +67,15 @@ class _LoginState extends State<Login> {
                           },
                           decoration: InputDecoration(
                             hintText: "Enter Password",
-                         //   labelText: "Password",
+                            //   labelText: "Password",
                             border: OutlineInputBorder(),
                           ),
                         ),
-                         SizedBox(height: 20,),
-                    
-          
-                                               // ElevatedButton
+                        SizedBox(
+                          height: 20,
+                        ),
+
+                        // ElevatedButton
                         Container(
                           height: 40,
                           width: 300,
@@ -90,39 +90,45 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
                         Container(
                           child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => login(),));
-                            },
-                            child: Text('Sign here')),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => login(),
+                                    ));
+                              },
+                              child: Text('Sign here')),
                           alignment: Alignment.centerRight,
                         ),
                       ],
                     )),
               ),
-          ),
+            ),
     );
   }
-                                                // Firebase 
-  
+  // Firebase
+
   void sinup() {
     if (_formkey.currentState!.validate()) {
       FirebaseAuth.instance
           .createUserWithEmailAndPassword(
               email: _email.text, password: _password.text)
           .then((user) {
-            setState(() {
-              isLoading = false;
-            });
-            Fluttertoast.showToast(msg:'Registration sucessfully');
+        setState(() {
+          isLoading = false;
+        });
+        Fluttertoast.showToast(msg: 'Registration sucessfully');
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => login()),
             (Route<dynamic> route) => false);
       }).catchError((onError) {
-       Fluttertoast.showToast(msg:"$onError");
+        Fluttertoast.showToast(msg: "$onError");
       });
     }
   }

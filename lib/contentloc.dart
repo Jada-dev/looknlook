@@ -76,9 +76,9 @@ class _contentlocState extends State<contentloc> {
               height: 60,
               width: 100,
               padding:
-                  EdgeInsets.only(left: 35, right: 20, bottom: 20, top: 20),
+                  EdgeInsets.only(left: 25, right: 20, bottom: 20, top: 20),
               child: Text(
-                "All",
+                "Public",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 14,

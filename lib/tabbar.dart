@@ -24,25 +24,20 @@ class _tabbarState extends State<tabbar> {
                 text: 'Sign',
               ),
               Tab(
-               text: 'Register',
+                text: 'Register',
               ),
-             
             ],
           ),
         ),
-        body:  TabBarView(
+        body: TabBarView(
           children: <Widget>[
-            Center(
-              child: login()
-            ),
+            Center(child: login()),
             Center(
               child: Login(),
             ),
-           
           ],
         ),
       ),
     );
   }
 }
-  

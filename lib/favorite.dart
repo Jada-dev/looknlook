@@ -8,8 +8,7 @@ class favorite extends StatefulWidget {
 }
 
 class _favoriteState extends State<favorite> {
-  
-get returnFuture => null;
+  get returnFuture => null;
 
   Future<int> tempFuture() async {
     return Future.delayed(Duration(seconds: 1));
@@ -17,7 +16,7 @@ get returnFuture => null;
 
   @override
   Widget build(BuildContext context) {
-     return Center(
+    return Center(
       child: FutureBuilder(
         future: tempFuture(),
         builder: (context, snapshot) =>

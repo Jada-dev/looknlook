@@ -16,30 +16,28 @@ class bottom extends StatefulWidget {
 
 class _bottomState extends State<bottom> {
   int myIndex = 0;
-  List king = [mother(),save(), add(), profile()];
+  List king = [mother(), save(), add(), profile()];
 
-
-@override
+  @override
   void initState() {
     super.initState();
-   FirebaseAuth.instance
-  .authStateChanges()
-  .listen((user) {
-    if (user == null) {
-      print('User is currently signed out!');
-       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => tabbar()),(Route<dynamic>  rr) => false);
-    } else {
-     
-      print('User is signed in!');
-    }
-  });
-   
+    FirebaseAuth.instance.authStateChanges().listen((user) {
+      if (user == null) {
+        print('User is currently signed out!');
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (_) => tabbar()),
+            (Route<dynamic> rr) => false);
+      } else {
+        print('User is signed in!');
+      }
+    });
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[400],
       body: king[myIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
@@ -54,14 +52,10 @@ class _bottomState extends State<bottom> {
               icon: Icon(Icons.home),
               label: 'Home',
               backgroundColor: Colors.blue),
-
-               BottomNavigationBarItem(
+          BottomNavigationBarItem(
               icon: Icon(Icons.favorite),
               label: 'Saved',
               backgroundColor: Colors.blue),
-              
-
-              
           BottomNavigationBarItem(
               icon: Icon(Icons.add),
               label: 'Add',
