@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:looknlook/bottom.dart';
+import 'package:looknlook/contentscreen.dart';
+import 'package:path/path.dart';
 
 class Gauth extends StatefulWidget {
   @override
@@ -43,8 +46,9 @@ class Gauth1 {
 
     // create a new credantail for user
     final credantial = GoogleAuthProvider.credential(
-      accessToken: gAuth.idToken,
+      accessToken: gAuth.idToken,   
     );
+    
     // finally , lets sign in
   }
 }

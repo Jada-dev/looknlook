@@ -56,8 +56,8 @@ class _addState extends State<add> {
     });
 
     //  Reference firebaseStorageRef =FirebaseStorage.instance.ref().child(photo.path);
-    //UploadTask uploadTask = firebaseStorageRef.putFile(media!);
-    // TaskSnapshot taskSnapshot= await uploadTask.whenComplete(()=>null);
+    // UploadTask uploadTask = firebaseStorageRef.putFile(media!);
+    // TaskSnapshot taskSnapshot= await uploadTask.whenComplete(() => null);
 
     _controller = VideoPlayerController.file(media!);
 

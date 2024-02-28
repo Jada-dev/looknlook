@@ -30,7 +30,8 @@ class profile extends StatelessWidget {
         ],
       ),
       backgroundColor: Colors.grey[400],
-      body: Column(
+      body:
+       Column(
         children: [
           // profile photo
           Container(

@@ -105,7 +105,7 @@ class _opctionscreenState extends State<opctionscreen> {
               },
               child: Column(
                 children: [
-                  Icon(Icons.favorite,
+                  Icon(Icons.bookmarks_outlined,
                       size: 25,
                       color: _favorite == false ? Colors.white : Colors.red),
                   Text(

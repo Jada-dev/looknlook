@@ -12,11 +12,31 @@ class addscreen extends StatefulWidget {
   VideoPlayerController? controller;
   addscreen({Key? key, required this.controller}) : super(key: key);
 
+  
   @override
   State<addscreen> createState() => _MyWidgetState();
 }
 
 class _MyWidgetState extends State<addscreen> {
+   XFile? _media;
+  Future getImage(BuildContext context) async {
+    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    setState(() {
+      _media = image;
+      print('Image path $_media');
+    });
+  }
+  Future uploadPic(BuildContext context) async {
+    String filName = basename(_media!.path);
+    Reference firebaseStorageRef =
+        FirebaseStorage.instance.ref().child(filName);
+    UploadTask uploadTask = firebaseStorageRef.putFile(File(_media!.path));
+    TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
+
+  }
+  //  uploadPic(context);
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,7 +102,9 @@ class _MyWidgetState extends State<addscreen> {
                 ),
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+               
+                },
                 color: Colors.yellow[900],
                 child: Text(
                   'Post',
@@ -94,5 +116,7 @@ class _MyWidgetState extends State<addscreen> {
         ),
       ),
     );
-  }
-}
+  } 
+    }
+  
+

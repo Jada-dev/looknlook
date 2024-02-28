@@ -53,7 +53,7 @@ class _bottomState extends State<bottom> {
               label: 'Home',
               backgroundColor: Colors.blue),
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
+              icon: Icon(Icons.bookmarks_outlined),
               label: 'Saved',
               backgroundColor: Colors.blue),
           BottomNavigationBarItem(
